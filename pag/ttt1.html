@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <title>I Trimestre</title>
-
   <style>
     * {
       margin: 0;
@@ -13,7 +13,7 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    body {
+    header {
       background: #4c5156;
     }
 
@@ -87,22 +87,85 @@
       background: #38f848;
       color: #000;
     }
+    .button{
+    padding:10px 18px;
+    border-radius:20px;
+    border:1px solid #334155;
+    background:blue;
+    color:white;
+    margin-left:10px;
+    cursor:pointer;
+    }
+
+    .button:hover{
+    
+    border-radius:20px;
+    border:1px solid #0369f7;
+    background:transparent;
+    color:white;
+    cursor:pointer;
+    }
   </style>
 </head>
 
 <body>
+  
+  <header class="header">
+    <h1><a href="../index.html">HOME</a></h1>
+    <div class="nav-btns">
+      <a href="ttt1.html" class="button">T1</a>
+      <a href="ttt2.html" class="button">T2</a>
+      <a href="ttt3.html" class="button">T3</a>
+    </div>
+    
+    <nav>
+      <a href="trimestre1.html">Iº Trim.</a>
+      <a href="trimestre2.html">IIº Trim.</a>
+      <a href="trimestre3.html">IIIº Trim.</a>
+    </nav>
+  </header>
+  
+  <div>
+    <h2>.Insira os dados do aluno</h2>
+    <form id="alunoForm" class="bg-light p-4 rounded shadow">
+      <div class="mb-2"><label class="form-label">Nome</label><input type="text" class="form-control" id="nome" required></div>
+      <div class="mb-2"><label class="form-label">Número</label><input type="text" class="form-control" id="numeroAluno" required></div>
+      <div class="mb-2"><label class="form-label">Sala</label><input type="text" class="form-control" id="numeroSala" required></div>
+      <div class="mb-2"><label class="form-label">Turma</label><input type="text" class="form-control" id="turma" required></div>
+      <div class="mb-2"><label class="form-label">Disciplina</label><input type="text" class="form-control" id="disciplina" required></div>
+      <div class="mb-2"><label class="form-label">Nota 1</label><input type="number" class="form-control" id="nota1" required></div>
+      <div class="mb-2"><label class="form-label">Nota 2</label><input type="number" class="form-control" id="nota2" required></div>
+      <div class="mb-2"><label class="form-label">Nota 3</label><input type="number" class="form-control" id="nota3" required></div>
+      <button type="submit" class="btn btn-success">Salvar</button>
+      </form>
+    </div>
 
-<header class="header">
-  <h1><a href="../index.html">HOME</a></h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>
+      document.getElementById("alunoForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        const aluno = {
+            nome: nome.value,
+            numero: numero.value,
+            numero: numero.value,
+            turma: turma.value,
+            disciplina: disciplina.value,
+            nota1: parseFloat(not1.value),
+            nota2: parseFloat(not2.value),
+            nota3: parseFloat(nota.value)
+        };
+        localStorage.setItem("aluno", JSON.stringify(aluno));
+        window.location.href = "ttt2.html";
 
-  <nav>
-    <a href="trimestre1.html">Iº Trim.</a>
-    <a href="trimestre2.html">IIº Trim.</a>
-    <a href="trimestre3.html">IIIº Trim.</a>
-  </nav>
-</header>
+            // Recupera lista existente ou cria nova
+        let alunos = JSON.parse(localStorage.getItem("alunos")) || [];
+        alunos.push(aluno);
 
-<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus sed maxime, ab alias assumenda possimus ullam in aperiam unde dolor, animi, dolorum 
-  obcaecati recusandae rem. Ab eligendi ipsum tempora a!</p>
+        // Salva lista atualizada
+        localStorage.setItem("alunos", JSON.stringify(alunos));
+
+        window.location.href = "ttt2.html";
+  });
+  </script>
 </body>
 </html>
